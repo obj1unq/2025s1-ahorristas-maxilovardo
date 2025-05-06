@@ -2,9 +2,13 @@ import objetos.*
 
 
 describe "Test de las personas" {
+	const rebeca = new PersonaSinCajaFuerte()
+	const ada = new PersonaSinCajaFuerte()
+	
 
  	method initialize() {
  		rebeca.cobrar(1000)
+		ada.miCuenta().saldo(3000)
  	}
 
 	test "ahorros de les pibes" {
@@ -14,17 +18,17 @@ describe "Test de las personas" {
 		assert.equals(1000, rebeca.ahorros())
 	}
 
-//	test "ir a comer" {
-//		rebeca.salirAComer()
-//		ada.salirAComer()
-//		assert.equals(500, rebeca.ahorros())
-//		assert.equals(2500, ada.ahorros())
-//	}
-//
-//	test "empresa" {
-//		empresa.empleados(#{pepe, ada, rebeca})
-//		assert.equals(ada, empresa.masRico())		
-//	}
+	test "ir a comer" {
+		rebeca.salirAComer()
+		ada.salirAComer()
+		assert.equals(500, rebeca.ahorros())
+		assert.equals(2500, ada.ahorros())
+	}
+
+	test "empresa" {
+		empresa.empleados(#{pepe, ada, rebeca})
+		assert.equals(ada, empresa.masRico())
+	}
 
 }
 

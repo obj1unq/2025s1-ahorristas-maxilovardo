@@ -1,5 +1,5 @@
 
-object cuentaCorriente {
+class CuentaCorriente {
 	var property saldo = 0
 	method depositar(monto) { saldo += monto }
 	method extraer(monto) { saldo -= monto }
@@ -12,7 +12,7 @@ object colchon {
 
 object pepe {
 	const cajaFuerte = colchon
-	const miCuenta = cuentaCorriente
+	const miCuenta = new CuentaCorriente()
 	method cobrar(monto) { 
 		cajaFuerte.guardar(monto)
 	}
@@ -25,8 +25,8 @@ object pepe {
 }
 //en homenaje a Rebeca Cherep de Guber 
 //https://es.wikipedia.org/wiki/Rebeca_Guber
-object rebeca {
-	const miCuenta = cuentaCorriente
+class PersonaSinCajaFuerte {
+	const miCuenta = new CuentaCorriente()
 	method cobrar(monto) { 
 		miCuenta.depositar(monto)
 	}
@@ -36,7 +36,17 @@ object rebeca {
 	method ahorros() { 
 		return miCuenta.saldo()
 	}
+
+	method salirAComer(){
+		self.gastar(500)
+	}
 }
 
+object empresa{
+	const property empleados = #{}
 
+	method masRico(){
+		return empleados.max({empleado => empleado.ahorros()})
+	}
+}
 
